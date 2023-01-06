@@ -5,7 +5,14 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
+        Main main = new Main();
 
+        int[][] array = main.createArray();
+        main.showArray(array);
+
+    }
+
+    private int[][] createArray() {
         boolean condition = true;
         int rowNumbers = 0;
         int columnNumbers = 0;
@@ -26,17 +33,21 @@ public class Main {
                 numbers[i][j] = i * j;
             }
         }
+        return numbers;
+    }
 
-        for (int[] number : numbers) {
+    private void showArray(int[][] array) {
+        char c = '|';
+        for (int[] number : array) {
             for (int i : number) {
                 if (i < 10) {
-                    System.out.printf("     %d  |", i);
+                    System.out.printf("%6d%3c", i, c);
                 } else {
-                    System.out.printf("    %d  |", i);
+                    System.out.printf("%6d%3c", i, c);
                 }
             }
             System.out.println();
-            for (int i = 0; i < columnNumbers; i++) {
+            for (int i = 0; i < array[0].length; i++) {
                 System.out.print("---------");
             }
             System.out.println();
